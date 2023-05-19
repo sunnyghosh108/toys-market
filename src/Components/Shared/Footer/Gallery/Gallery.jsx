@@ -12,7 +12,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Dolls trailer!</h2>
          <p>Dolls trailer</p>
-         <p>Price:$245</p>
+         
        </div>
        </div>
        <div className="card w-96 bg-base-100 shadow-xl">
@@ -22,7 +22,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Construction toys!</h2>
          <p>Construction toys</p>
-         <p>Price:$245</p>
+        
        </div>
        </div>
        <div className="card w-96 bg-base-100 shadow-xl">
@@ -32,7 +32,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Teddy Bear!</h2>
          <p>Teddy Bear</p>
-         <p>Price:$245</p>
+       
        </div>
        </div>
        <div className="card w-96 bg-base-100 shadow-xl">
@@ -42,7 +42,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Emergency Truck!</h2>
          <p>Emergency Truck trailer!</p>
-         <p>Price:$245</p>
+        
        </div>
        </div>
        <div className="card w-96 bg-base-100 shadow-xl">
@@ -52,7 +52,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Genius Tray!!</h2>
          <p>Genius Tray</p>
-         <p>Price:$245</p>
+        
        </div>
        </div>
        <div className="card w-96 bg-base-100 shadow-xl">
@@ -62,7 +62,7 @@ const Gallery = () => {
         <div className="card-body items-center text-center">
         <h2 className="card-title">Excavator Toys!</h2>
          <p className='text-black'>Excavator trailer</p>
-         <p>Price:$125</p>
+         
        </div>
        </div>
            </div>

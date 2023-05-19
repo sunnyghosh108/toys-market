@@ -10,6 +10,7 @@ import Blog from "../Components/Blog/Blog";
 
 
 
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
         {
           path:'blogs',
           element:<Blog></Blog>
-        }
+        },
+        
 
       ]
     },
