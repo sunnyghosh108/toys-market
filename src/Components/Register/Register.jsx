@@ -5,10 +5,12 @@ const Register = () => {
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
+        const name=form.name.value;
+        const photoUrl=form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
-        //console.log(name, email, password)
-        signIn(email, password)
+        console.log(name, email, password,photoUrl)
+       // signIn(email, password)
             .then(result => {
                 const user = result.user;
                 
@@ -35,6 +37,19 @@ const Register = () => {
                 <div className="card-body">
                     <h1 className="text-3xl text-center font-bold">register!!</h1>
                     <form onSubmit={handleRegister}>
+                        
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">photoUrl</span>
+                            </label>
+                            <input type="text" name='photoUrl' placeholder="PhotoUrl" className="input input-bordered" />
+                        </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
