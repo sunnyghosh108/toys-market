@@ -9,7 +9,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
+        console.log( email, password)
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -29,7 +29,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
             <div className="w-1/2 mr-12">
-                <img src='https://img.freepik.com/free-vector/placeholder-concept-illustration_114360-4847.jpg?size=626&ext=jpg&ga=GA1.1.506183432.1673968873&semt=ais' alt="" />
+                <img src='https://img.freepik.com/premium-vector/sign-page-illustration-design-template_559664-157.jpg?w=740' alt="" />
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body">
