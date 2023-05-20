@@ -5,7 +5,7 @@ const Help = () => {
         <div className=''>
             <h3 className='text-center font-bold text-3xl text-slate-950'> CREATIVE APPROACH</h3>
          <p className='text-center text-6xl text-black mb-8'>We help you take care of the kids</p>
-            <div className='flex'>
+            <div className='flex m-12'>
 
             <div className='flex'>
              <img src='https://junotoys.themerex.net/wp-content/uploads/elementor/thumbs/img-h1-copyright-pjttqvwalbrnw817unztz81psqjvvc3rr9033y79eu.jpg'/>

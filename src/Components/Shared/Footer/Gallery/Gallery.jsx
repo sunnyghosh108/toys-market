@@ -3,7 +3,7 @@ import React from 'react';
 const Gallery = () => {
     return (
          <div>
-            <h3 className='text-center text-red-400 text-3xl'>JUNO KIDS & TOYS GALLERY</h3>
+            <h3 className='text-center text-red-400 text-3xl mt-9'>JUNO KIDS & TOYS GALLERY</h3>
            <div className='grid grid-cols-3 gap-4 m-5'>
            <div className="card w-96 bg-base-100 shadow-xl">
            <figure className="px-10 pt-10">
