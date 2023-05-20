@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
     const handleRegister = event => {
@@ -31,7 +32,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
             <div className="w-1/2 mr-12">
-                <img src='https://img.freepik.com/free-vector/placeholder-concept-illustration_114360-4847.jpg?size=626&ext=jpg&ga=GA1.1.506183432.1673968873&semt=ais' alt="" />
+                <img   src='https://i.ibb.co/S3xS80n/placeholder-concept-illustration-114360-4847.jpg' alt="" />
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body">
@@ -70,7 +71,7 @@ const Register = () => {
                         </div>
                     </form>
                     <p className='my-4 text-center'>New to website <Link className='text-orange-600 font-bold' to="/login">login</Link> </p>
-                   
+                   <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+//import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Login = () => {
-  //  const { signIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -29,7 +31,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
             <div className="w-1/2 mr-12">
-                <img src='https://img.freepik.com/premium-vector/sign-page-illustration-design-template_559664-157.jpg?w=740' alt="" />
+                <img src='https://i.ibb.co/9yvsN9x/sign-page-illustration-design-template-559664-157.jpg' alt="" />
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body">
@@ -55,7 +57,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='my-4 text-center'>New to website <Link className='text-orange-600 font-bold' to="/register">register</Link> </p>
-                   
+                   <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
