@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import user from '../../../../assets/user-1.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 const NavBar = () => {
 
+
+    const {user, logOut}=useContext(AuthContext);
+
+    const handleLogOut = () =>{
+    logOut()
+    .then(()=>{
+       
+        
+    })
+    .catch(error => console.log(error))
+    }
 
 
     const navItems = <>
@@ -12,11 +24,13 @@ const NavBar = () => {
     <li> <Link to="/myToys">MyToys</Link> </li>
     <li> <Link to="/blogs">Blogs</Link> </li>
 
-   <> 
-     <li><Link to="/bookings">My Bookings</Link> </li>
-  
-    </>
-     <li> <Link to="/logout">LogOut</Link> </li>
+    {
+        user?.email? <> 
+         <li><Link to="/bookings">My Bookings</Link> </li>
+        <li><button onClick={handleLogOut}>Log out</button></li>
+        </>
+        : <li> <Link to="/login">Login</Link> </li>
+       }
    
     </>
 
@@ -48,7 +62,7 @@ const NavBar = () => {
     </ul>
 </div>
 <div className="navbar-end">
-<img className='w-20 h-20' src={user}/>
+<img className='w-20 h-20' src='https://i.ibb.co/SfDzTss/user-1.png'/>
 </div>
 </div>
     );
