@@ -1,52 +1,45 @@
 import React, { useContext, useEffect, useState } from 'react';
-//import { AuthContext } from '../../providers/AuthProvider';
-//import BookingRow from './BookingRow/BookingRow';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import BookingRow from './BookingRow';
-
+import Swal from 'sweetalert2'
 const Bookings = () => {
     const {user}=useContext(AuthContext);
     const [bookings,setBookings]=useState([]);
     const navigate =useNavigate();
-   
-    const url = `services.json/bookings?email=${user?.email}`;
+    
+
+    const url = `http://localhost:5000/products?email=${user?.email}`;
     useEffect(() => {
-        fetch(url, {
-            method: 'GET', 
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('car-access-token')}`
-            }
-        })
-        .then(res =>res.json())
-          .then(data =>{
-          
-            if(!data.error){
-              setBookings(data)
-            }
-            else{
-              // logout and then navigate
-              navigate('/');
-            }
+     fetch(url)
+     .then(res =>res.json())
+     .then(data => setBookings(data))
 
-            setBookings(data)})
-
-        },[url,navigate]);
-
-
+    },[url]);
+        
 
 
     const handleDelete=id=>{
-        const proceed=confirm('Are you sure you want to delete');
+        const proceed=confirm('Are you sure you want to delete?');
         if(proceed){
-          fetch(`services.json/bookings/${id}`,{
+          fetch(`http://localhost:5000/products/${id}`,{
              method:'DELETE'
           })
           .then(res =>res.json())
           .then(data =>{
             console.log(data);
-            if(data.deletedCount > 0){
-                alert('deleted successfully');
+            if(data.deletedCount > 0) 
+            {
+                // alert('deleted successfully');
+                Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                })
                 const remaining = bookings.filter(booking =>booking._id !==id);
                 setBookings(remaining);
             }
@@ -55,7 +48,7 @@ const Bookings = () => {
     }
     
     const handleBookingConfirm =id =>{
-        fetch(`services.json/bookings/${id}`,{
+        fetch(`http://localhost:5000/products/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'
@@ -78,12 +71,14 @@ const Bookings = () => {
     }
 
 
+    
+
     return  (
-        <div>
-            <h2 className="text-5xl">Your bookings:{bookings.length}</h2>
+        <div className=''>
+            <h2 className="text-3xl text-orange-400 text-center mt-4">Your bookings:{bookings.length}</h2>
             <div className="overflow-x-auto w-full">
        <table className="table w-full">
-      {/* head */}
+    
        <thead>
       <tr>
         <th>
@@ -92,14 +87,15 @@ const Bookings = () => {
           </label>
         </th>
         <th>Image</th>
-        <th>Service</th>
-        <th>Date</th>
+        <th>Details</th>
+        <th>Seller</th>
         <th>price</th>
+        <th>Ratings</th>
         <th>Status</th>
       </tr>
       </thead>
       <tbody>
-        
+       
         {
                             bookings.map(booking => <BookingRow
                                 key={booking._id}

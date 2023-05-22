@@ -3,7 +3,7 @@ import React from 'react';
 const Brands = () => {
     return (
         <div className='m-4'>
-            <div className='flex gap-10  bg-cyan-50 w-full'>
+            <div className='flex gap-10  bg-[#F4F3F0] w-full'>
                 <div> <img  src='https://junotoys.themerex.net/wp-content/uploads/2021/09/cl5-copyright.png'/> </div>
                 <div> <img  src='https://junotoys.themerex.net/wp-content/uploads/2021/09/cl4-copyright.png'/> </div>
                 <div> <img  src='https://junotoys.themerex.net/wp-content/uploads/2021/09/cl3-copyright.png'/> </div>

@@ -1,38 +1,67 @@
-import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import Gallery from '../Shared/Footer/Gallery/Gallery';
-import MathToys from './MathToys';
-import Language from './Language';
+import React, { useEffect, useState } from 'react';
+
+//import { FaArrowRight } from "react-icons/fa";
+import TeddyBear from './TeddyBear';
+
+
+
 
 const AllToys = () => {
-   /// const [tabIndex, setTabIndex] = useState(0);
+  
+  const [toys, setToys] = useState([]);
+  const [activeTab, setActiveTab] = useState("remote");
+
+  useEffect(() => {
+    fetch(`/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setToys(result);
+      });
+  }, [activeTab]);
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+ 
     return (
-        <div className='text-center mb-16'>
-            <h3 className='text-center text-slate-950 text-5xl mb-5'>ALL TOYS CATEGORY</h3>
-        <Tabs>
-        <TabList>
-          <Tab><span className='text-2xl text-amber-500 '>Maths toys</span></Tab>
-          <Tab><span className='text-2xl text-amber-500 '>Science toys</span></Tab>
-          <Tab><span className='text-2xl text-amber-500 '>Language toys</span></Tab>
-        </TabList>
-    
-        <TabPanel>
-        <MathToys></MathToys>
-        </TabPanel>
-        <TabPanel>
-        <Tab><span className='text-2xl text-amber-500 '>Civil toys</span></Tab>
-          <Tab><span className='text-2xl text-amber-500 '>CSE toys</span></Tab>
-        </TabPanel>
-        <TabPanel>
-        <Tab><span className='text-2xl text-amber-500 '>EEE toys</span></Tab>
-          <Tab><span className='text-2xl text-amber-500 '>IT toys</span></Tab>
-        </TabPanel>
-      </Tabs>
-      <TabPanel>
-          
-        </TabPanel>
+          <div>
+      <h1 className="title text-center mt-5 p-5">All Toys category</h1>
+      <div className="tab-container text-center">
+        <div className="text-center w-100 m-auto">
+          <div className="tabs d-flex justify-content-center align-items-center">
+            <div
+              onClick={() => handleTabClick("remote")}
+              className={`tab  tab2 remote ${
+                activeTab == "remote" ? " bg-danger text-white" : ""
+              }`}
+            >
+              Teddy Bear
+            </div>
+            <div
+              onClick={() => handleTabClick("offline")}
+              className={`tab  tab2 Offline ${
+                activeTab == "offline" ? " bg-danger text-white" : ""
+              }`}
+            >
+             Dinsaour toys
+            </div>
+            <div
+              onClick={() => handleTabClick("offline")}
+              className={`tab  tab2 Offline ${
+                activeTab == "offline" ? " bg-danger text-white" : ""
+              }`}
+            >
+             Unicorn toys
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="jobs-container mt-5 row">
+        {toys?.map((toy) => (
+          <TeddyBear toy={toy}></TeddyBear>
+        ))}
+      </div>
+    </div>
     );
 };
 

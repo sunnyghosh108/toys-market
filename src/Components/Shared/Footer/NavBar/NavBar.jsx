@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import user from '../../../../assets/user-1.png'
+
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 const NavBar = () => {
@@ -22,11 +22,13 @@ const NavBar = () => {
     <li> <Link to="/login">LogIn</Link> </li>
     <li> <Link to="/alltoys">AllToys</Link> </li>
     <li> <Link to="/myToys">MyToys</Link> </li>
+    <li> <Link to="/addtoys">AddToys</Link> </li>
     <li> <Link to="/blogs">Blogs</Link> </li>
+    <li> <Link to="/singletoys">Single Toys</Link> </li>
 
     {
         user?.email? <> 
-         <li><Link to="/bookings">My Bookings</Link> </li>
+         <li><Link to="/bookings">My Toys Bookings </Link> </li>
         <li><button onClick={handleLogOut}>Log out</button></li>
         </>
         : <li> <Link to="/login">Login</Link> </li>
@@ -53,7 +55,7 @@ const NavBar = () => {
     </Link>
    <div className='d-flex mt-6'>
     <p className='text-center text-orange-500 font-bold'>KIDS</p>
-   <p className='text-lime-500 font-bold'>TOYS AND GAMES </p>
+<p className='text-lime-500 font-bold'>Toys and games </p>
    </div>
 </div>
 <div className="navbar-center hidden lg:flex">

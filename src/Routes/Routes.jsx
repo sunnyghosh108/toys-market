@@ -5,9 +5,10 @@ import Error from "../Components/Error";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import Blog from "../Components/Blog/Blog";
-import BookService from "../Components/AllToys/BookService";
+import AddToys from "../Components/AllToys/AddToys";
 import Bookings from "../Components/AllToys/Bookings";
-
+import PrivateRoute from "./PrivateRoute";
+import UpdateToys from "../Components/AllToys/UpdateToys";
 
 
 
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       children:[
         {
             path:'/',
-            element:<Home></Home>
+            element:<Home></Home>,
+           
         },
         {
             path:'login',
@@ -36,14 +38,19 @@ const router = createBrowserRouter([
           element:<Blog></Blog>
         },
         {
-          path:'book/:id',
-          element:<BookService></BookService>,
-          loader:({params})=>fetch('http://localhost:5000/products/${params.id}')
+          path:'addtoys',
+          element:<AddToys></AddToys>
         },
         {
           path:'bookings',
-          element:<Bookings></Bookings>
+          element:<PrivateRoute><Bookings></Bookings></PrivateRoute>,
+        },
+        {
+          path:'updateToys/:id',
+          element:<UpdateToys></UpdateToys>,
+          loader:({params})=> fetch(`http://localhost:5000/products/${params.id}`)
         }
+        
         
 
       ]
