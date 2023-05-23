@@ -18,7 +18,7 @@ const AddToys = () => {
         console.log(newToys);
 
         // send data to the server
-        fetch('http://localhost:5000/products',{
+        fetch('https://toys-marketplace-server-one.vercel.app/products',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

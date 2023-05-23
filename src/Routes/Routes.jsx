@@ -9,6 +9,7 @@ import AddToys from "../Components/AllToys/AddToys";
 import Bookings from "../Components/AllToys/Bookings";
 import PrivateRoute from "./PrivateRoute";
 import UpdateToys from "../Components/AllToys/UpdateToys";
+//import AllToys from "../Components/AllToys/AllToys";
 
 
 
@@ -48,8 +49,12 @@ const router = createBrowserRouter([
         {
           path:'updateToys/:id',
           element:<UpdateToys></UpdateToys>,
-          loader:({params})=> fetch(`http://localhost:5000/products/${params.id}`)
-        }
+          loader:({params})=> fetch(`https://toys-marketplace-server-one.vercel.app/products/${params.id}`)
+        },
+        // {
+        //   path:'alltoys',
+        //   element:<AllToys></AllToys>
+        // }
         
         
 

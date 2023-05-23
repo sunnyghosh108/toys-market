@@ -7,22 +7,39 @@ const Bookings = () => {
     const {user}=useContext(AuthContext);
     const [bookings,setBookings]=useState([]);
     const navigate =useNavigate();
-    
+    const [searchText, setSearchText] = useState("");
 
-    const url = `http://localhost:5000/products?email=${user?.email}`;
+   
+
+    const url = `https://toys-marketplace-server-one.vercel.app/products?email=${user?.email}`;
     useEffect(() => {
      fetch(url)
      .then(res =>res.json())
      .then(data => setBookings(data))
 
     },[url]);
+
+    // 
+
+    const handleSearch = () => {
+      fetch(`https://toys-marketplace-server-one.vercel.app/toysSearchByTitle/${searchText}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+         setBookings(data);
+        });
+    };
+
+    // 
+
+   
         
 
 
     const handleDelete=id=>{
         const proceed=confirm('Are you sure you want to delete?');
         if(proceed){
-          fetch(`http://localhost:5000/products/${id}`,{
+          fetch(`https://toys-marketplace-server-one.vercel.app/products/${id}`,{
              method:'DELETE'
           })
           .then(res =>res.json())
@@ -48,7 +65,7 @@ const Bookings = () => {
     }
     
     const handleBookingConfirm =id =>{
-        fetch(`http://localhost:5000/products/${id}`,{
+        fetch(`https://toys-marketplace-server-one.vercel.app/products/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'
@@ -74,8 +91,17 @@ const Bookings = () => {
     
 
     return  (
-        <div className=''>
+        <div className='md:w-1/4 lg:w-full'>
             <h2 className="text-3xl text-orange-400 text-center mt-4">Your bookings:{bookings.length}</h2>
+
+            <div className='search-box p-2 text-center text-slate-950'>
+            <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            className="p-1  bg-cyan-100 h-11"
+          />{" "}
+          <button className="btn btn-active btn-primary" onClick={handleSearch}><span>Search</span></button>
+            </div>
             <div className="overflow-x-auto w-full">
        <table className="table w-full">
     
@@ -86,12 +112,13 @@ const Bookings = () => {
             <input type="checkbox" className="checkbox" />
           </label>
         </th>
+      
         <th>Image</th>
-        <th>Details</th>
+        <th>Category</th>
         <th>Seller</th>
         <th>price</th>
         <th>Ratings</th>
-        <th>Status</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>

@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const BookingRow = ({booking,handleDelete,handleBookingConfirm,handleBookingUpdate}) => {
-    const {_id,seller,details,price,photo,status,ratings}=booking;
+const BookingRow = ({booking,handleDelete,handleBookingConfirm,handleSearch}) => {
+    const {_id,seller,details,price,photo,status,category,ratings}=booking;
     
+
+    const [control,setControl]=useState(false);
+
+    const handleBookingUpdate =id =>{
+      fetch(`https://toys-marketplace-server-one.vercel.app/products/${id}`,
+      {
+        method:"PUT",
+        headers:{"Content-type": "application/json"},
+        body:JSON.stringify(id),
+      })
+      .then((res)=>res.json())
+      .then((result)=>{
+        if(result.modifiedCount > 0){
+          setControl(!control);
+        }
+        console.log(result);
+
+      });
+    };
     
 
 
     return (
+     
         <tr>
         <th>
        {
@@ -24,7 +44,7 @@ const BookingRow = ({booking,handleDelete,handleBookingConfirm,handleBookingUpda
                </div>
                </div>
                </td>
-            <td>  {details}</td>
+            <td>  {category}</td>
             <td> {seller }</td>
             <td>${price}</td>
             <td> {ratings }</td>
@@ -34,15 +54,11 @@ const BookingRow = ({booking,handleDelete,handleBookingConfirm,handleBookingUpda
        
        {/* <button onClick={()=>handleBookingUpdate(_id)} className="btn btn-active btn-success ">Update</button> */}
 
-       <Link to={`updateToys/${_id}`}><button className="btn btn-active btn-success ">Update</button></Link>
-
-       
-
-
-
+       <Link to={`updateToys/${_id}`}><button className="btn btn-active btn-success ">Update</button> </Link>
        </div>
         </th>
       </tr>
+     
     );
 };
 
